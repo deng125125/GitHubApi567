@@ -8,7 +8,6 @@ Repo: Square567 Number of commits: 27
 "
 """
 import requests
-import unittest
 
 def result(username):
     """ Take a user ID.
@@ -20,27 +19,15 @@ def result(username):
     json = request.json()
     for i in range(0,len(json)):
         repo_name = json[i]['name']
-        commits = requests.get(f'https://api.github.com/users/{username}/{repo_name}/repos')
+        commits = requests.get(f'https://api.github.com/repos/{username}/{repo_name}/commits')
         list_.append(f"Repo: {repo_name} Number of commits: {len(commits.json())}")
 
     return list_
 
 
 def main():
-    """ Get an input"""
+    """ Get an input username and print result(username)"""
     username = input("Enter the github username: ")
-    result(username)
+    print(result(username))
 
-
-class TestResult(unittest.TestCase):
-    """ test result() """
-    def testResult(self):
-        list1 = ['Repo: cs61b Number of commits: 2', 'Repo: HW09 Number of commits: 2',
-                 'Repo: SSW567 Number of commits: 2', 'Repo: SSW810 Number of commits: 2',
-                 'Repo: Triangle567 Number of commits: 2']
-        self.assertEqual(result("deng125125"), list1)
-        self.assertEqual(result("John567"), [])
-
-if __name__ == '__main__':
-    print('Running unit tests')
-    unittest.main(exit=False, verbosity=2)
+print(result("momotech"))
