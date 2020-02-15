@@ -29,5 +29,3 @@ def main():
     """ Get an input username and print result(username)"""
     username = input("Enter the github username: ")
     print(result(username))
-
-print(result("momotech"))
