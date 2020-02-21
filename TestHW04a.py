@@ -2,17 +2,22 @@
 Test HW04a
 """
 import unittest
-from HW04a import result
+import requests
+from unittest import mock
+import HW04a
+
 
 class TestResult(unittest.TestCase):
     """ test result() """
-    def testResult(self):
+    @mock.patch('HW04a.result')
+    def test_result(self, mockedReq):
         list1 = ['Repo: MLN Number of commits: 30',
                  'Repo: MLNKV Number of commits: 14',
                  'Repo: MLN_Toolkit Number of commits: 10']
-        self.assertEqual(result("momotech"), list1)
-        self.assertEqual(result("John567"), [])
+        mockedReq.return_value = list1
+        self.assertEqual(HW04a.result("momotech"), list2)
+        # self.assertEqual(result("John567"), [])
 
 if __name__ == '__main__':
-    print('Running unit tests')
+    # test_result("momotech")
     unittest.main(exit=False, verbosity=2)
