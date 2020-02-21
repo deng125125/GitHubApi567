@@ -15,7 +15,7 @@ class TestResult(unittest.TestCase):
                  'Repo: MLNKV Number of commits: 14',
                  'Repo: MLN_Toolkit Number of commits: 10']
         mockedReq.return_value = list1
-        self.assertEqual(HW04a.result("momotech"), list2)
+        self.assertEqual(HW04a.result("momotech"), list1)
         # self.assertEqual(result("John567"), [])
 
 if __name__ == '__main__':
